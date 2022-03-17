@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services: # required applications 
+  - docker
+
+before_install: # setup before scripts are run
+  - docker build -t ronakr/docker-react -f Dockerfile.dev .
+
+script: # commands that need to be executed 
+  - docker run -e CI=true USERNAME/docker-react npm run test
